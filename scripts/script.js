@@ -1,7 +1,6 @@
-const data = fetch('https://itunes.apple.com/search?')
+const url = 'https://itunes.apple.com/search?term=beyonce';
+fetch(url)
+.then( (response) => response.json() )
+.then( (data) => console.log(data.results) )
 
-console.log(data);
-
-setTimeout(() = >{
-    console.log(data);
-}, 2000);
+.catch(error => console.log('Request failed: ', error))

@@ -1,4 +1,5 @@
 let term = ''
+const songContainer = document.getElementById('songs')
 
 const updateTerm = () => {
     term =  document.getElementById('searchInput').value;
@@ -6,14 +7,18 @@ const updateTerm = () => {
     if(!term || term === ''){
         alert('Please enter a search term')
     }else{
-        const url = `https://itunes.apple.com/search?term=${term}`;
+
+        while(songContainer.firstChild){
+            songContainer.removeChild(songContainer.firstChild);
+        }
+
+        const url = `https://itunes.apple.com/search?limit=10&media=music&term=${term}`;
         fetch(url)
         .then( (response) => response.json() )
         .then( (data) => {
             // console.log(data.results); 
             const artists = data.results;
             return artists.map(result => {
-                const songContainer = document.getElementById('songs')
 
                 const article =  document.createElement('article'),
                     artist =  document.createElement('p'),

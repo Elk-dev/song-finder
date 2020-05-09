@@ -58,3 +58,5 @@ document.addEventListener('play', event => {
         }
     }
 }, true)
+
+document.getElementById('songs');
